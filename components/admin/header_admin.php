@@ -20,7 +20,9 @@
       </li>
       <li class="nav-item <? if ($activeLink == 'all_user'){echo 'active';} ?>">
         <a class="nav-link" href="/admin/all_user">Все пользователи</a>
-
+      </li>
+      <li class="nav-item <? if ($activeLink == 'generate_links'){echo 'active';} ?>">
+        <a class="nav-link" href="/admin/generate_links">Генерация ссылок</a>
       </li>
     </ul>
     <button type="button" class="btn btn-success btn-logout" data-type="admin">Выход</button>
