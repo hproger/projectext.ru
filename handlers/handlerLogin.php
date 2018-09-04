@@ -8,7 +8,7 @@
 	
 	$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 
-	if($result)
+	if($result->num_rows)
 	{
 	    
         // очищаем результат
@@ -25,5 +25,9 @@
 		}
         mysqli_free_result($result);
         
-        exit;
+        
 	}
+	else {
+		echo json_encode(array('success' => false));
+	}
+	exit;

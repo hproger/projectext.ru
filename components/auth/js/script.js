@@ -92,10 +92,12 @@
 				})
 				.done(function(resp) {
 					console.log("success");
-					// console.log(data);
 					var jsonData = JSON.parse(resp);
 					if (jsonData.success) {
 						window.location = '/';
+					}
+					else {
+						alert('Ошибка авторизации');
 					}
 
 				})

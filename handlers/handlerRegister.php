@@ -16,10 +16,8 @@
 
 	if($result)
 	{
-	    // while ($row = mysqli_fetch_assoc($result)) {
-            
-     //    }
-         
+	    
+        echo json_encode(array('success' => true)); 
         // очищаем результат
         mysqli_free_result($result);
 	}

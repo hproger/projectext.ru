@@ -4,10 +4,8 @@
 	  	<?
 	  		$query = "SELECT * FROM `users`";
 	  		
-	  		
 	  		$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
-
-	  		if($result)
+	  		if($result->num_rows)
 	  		{
 	  		    
 	  	        while ($row = mysqli_fetch_object($result)) {
@@ -25,6 +23,9 @@
 	  	        }
 	  	        mysqli_free_result($result);
 	  	        
+	  		}
+	  		else {
+	  			echo "Пользователей нет";
 	  		}
 	  	?>
 	  	</ul>

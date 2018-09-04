@@ -4,7 +4,10 @@
 		$('#passport_data').mask('9999-999999');
 
 		$(document).on('click', function(e){
-			var $this = $(e.target);
+			var $this = $(e.target),
+				$form = ($this.closest('.generate_links')) ? $this.closest('.generate_links') : null;
+				
+
 			if (!$this.hasClass('nav-link')) {
 				e.preventDefault();
 				if ($this.hasClass('btn-edit-user')) {
@@ -60,6 +63,26 @@
 					.always(function() {
 						console.log("complete");
 					});
+				}
+				else if ($form && $this.hasClass('genLinkBtn')) {
+					var serlData = $form.serialize();
+
+					$.ajax({
+						url: '/handlers/handlerGenerateLinks.php',
+						type: 'POST',
+						data: serlData,
+					})
+					.done(function(data) {
+						console.log(data);
+						console.log("success");
+					})
+					.fail(function() {
+						console.log("error");
+					})
+					.always(function() {
+						console.log("complete");
+					});
+					
 				}
 			}
 		});

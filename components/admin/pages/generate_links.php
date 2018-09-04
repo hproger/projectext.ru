@@ -11,24 +11,25 @@
 	        </ul>
 	        <div class="tab-content" id="myTabContent">
 	          <div class="tab-pane fade show active" id="experts" role="tabpanel" aria-labelledby="experts-tab">
-				<form>
+				<form class="generate_links">
+					<input type="hidden" name="type_links" value="expert">
 					<div class="form-row">
 						<div class="form-group col-sm-3">
 							<label for="inputCountLinksExp" class="col-sm-12 form-control-label">Количество генерируемых ссылок</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="inputCountLinksExp" placeholder="5">
+								<input type="text" class="form-control" id="inputCountLinksExp" name="inputCountLinksExp" placeholder="5">
 							</div>
 						</div>
 						<div class="form-group col-sm-3">
 							<label for="inputDateActiveLinkExp" class="col-sm-12 form-control-label">Срок годности ссылки (в днях)</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="inputDateActiveLinkExp" placeholder="5">
+								<input type="text" class="form-control" id="inputDateActiveLinkExp" name="inputDateActiveLinkExp" placeholder="5">
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-success">Сгенерировать</button>
+							<button type="submit" class="btn btn-success genLinkBtn">Сгенерировать</button>
 						</div>
 					</div>
 				</form>
@@ -40,24 +41,25 @@
 				</ul>
 	          </div>
 	          <div class="tab-pane fade" id="volunteer" role="tabpanel" aria-labelledby="volunteer-tab">
-				<form>
+				<form class="generate_links">
+					<input type="hidden" name="type_links" value="volunteer">
 					<div class="form-row">
 						<div class="form-group col-sm-3">
 							<label for="inputCountLinksVol" class="col-sm-12 form-control-label">Количество генерируемых ссылок</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="inputCountLinksVol" placeholder="5">
+								<input type="text" class="form-control" id="inputCountLinksVol" name="inputCountLinksVol" placeholder="5">
 							</div>
 						</div>
 						<div class="form-group col-sm-3">
 							<label for="inputDateActiveLinkVol" class="col-sm-12 form-control-label">Срок годности ссылки (в днях)</label>
 							<div class="col-sm-3">
-								<input type="text" class="form-control" id="inputDateActiveLinkVol" placeholder="5">
+								<input type="text" class="form-control" id="inputDateActiveLinkVol" name="inputDateActiveLinkVol" placeholder="5">
 							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-success">Сгенерировать</button>
+							<button type="submit" class="btn btn-success genLinkBtn">Сгенерировать</button>
 						</div>
 					</div>
 				</form>
