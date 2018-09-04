@@ -72,9 +72,20 @@
 						type: 'POST',
 						data: serlData,
 					})
-					.done(function(data) {
-						console.log(data);
-						console.log("success");
+					.done(function(resp) {
+						var jsonData = JSON.parse(resp),
+							respData = jsonData.data,
+							listLi = '';
+						if (jsonData.success) {
+							console.log("success");
+							for (var i = 0; i < respData.length; i++) {
+								listLi += '<li class="list-group-item">'+respData[i].link+'</li>';
+							}
+						}
+						else {
+
+						}
+						
 					})
 					.fail(function() {
 						console.log("error");

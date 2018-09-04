@@ -26,6 +26,7 @@
 	<div id="register-student" class="mod-btn" style="display: none;">
 		<h2>Регистрация <span class="fontawesome-times close-register"></span></h2>
 		<form action="javascript:void(0);" method="POST" class="register" data-id="student">
+			<input type="hidden" name="type_user" value="stud" >
 			<fieldset>
 				
 				<p><label for="last_name">Фамилия:</label> <br><input type="text" id="last_name" name="last_name" value="" ></p>

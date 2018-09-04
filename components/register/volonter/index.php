@@ -5,6 +5,7 @@
 	<div id="register-volonter" class="mod-btn" >
 		<h2>Регистрация</h2>
 		<form action="javascript:void(0);" method="POST">
+			<input type="hidden" name="type_user" value="vol" >
 			<fieldset>
 				
 				<p><label for="last_name">Фамилия:</label> <br><input type="text" id="last_name" name="last_name" value="" ></p>

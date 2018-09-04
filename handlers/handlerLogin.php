@@ -17,12 +17,12 @@
         while ($row = mysqli_fetch_object($result)) {
         	$res[] = $row;
         }
-		if (count($res)) {
-			$_SESSION['loggined'] = 1;
-			$_SESSION['user'] = $res[0];
-			// $_SESSION['user_type'] = $res[0]->profession;
-			echo json_encode(array('success' => true, 'data' => $res));
-		}
+		
+		$_SESSION['loggined'] = 1;
+		$_SESSION['user'] = $res[0];
+		// $_SESSION['user_type'] = $res[0]->profession;
+		echo json_encode(array('success' => true, 'data' => $res));
+		
         mysqli_free_result($result);
         
         
