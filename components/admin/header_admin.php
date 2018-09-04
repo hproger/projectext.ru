@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/imports/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/components/admin/css/style.css">
 <script type="text/javascript" src="/imports/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="/imports/js/mixitup.min.js"></script>
 <script type="text/javascript" src="/components/admin/js/script.js"></script>
 <?
   // $linkUrl = explode('/', substr($_SERVER['REQUEST_URI'], 1));

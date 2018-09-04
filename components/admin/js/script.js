@@ -3,6 +3,10 @@
 		$('#phone_number').mask('+7(999)999-99-99');
 		$('#passport_data').mask('9999-999999');
 
+		if ($('#list-group').length) {
+			var mixer = mixitup('#list-group');
+		}
+		
 		$(document).on('click', function(e){
 			var $this = $(e.target),
 				$form = ($this.closest('.generate_links')) ? $this.closest('.generate_links') : null;

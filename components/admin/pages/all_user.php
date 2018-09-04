@@ -1,6 +1,21 @@
 <div class="row mgy-15">
 	<div class="col-md-12">
-	  	<ul class="list-group">
+		<div class="btn-group">
+		  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		      Фильтрация
+		    </button>
+		  <div class="dropdown-menu controls">
+		  	<a class="dropdown-item control" href="#" data-filter="all">Все</a>
+		    <a class="dropdown-item control" href="#" data-filter=".stud">Обучающиеся</a>
+		    <a class="dropdown-item control" href="#" data-filter=".exp">Эксперты</a>
+		    <a class="dropdown-item control" href="#" data-filter=".vol">Волонтёры</a>
+		  </div>
+		</div>
+	</div>
+</div>
+<div class="row mgy-15">
+	<div class="col-md-12">
+	  	<ul class="list-group" id="list-group">
 	  	<?
 	  		$query = "SELECT * FROM `users`";
 	  		
@@ -9,12 +24,13 @@
 	  		{
 	  		    
 	  	        while ($row = mysqli_fetch_object($result)) {
-	  	        	echo "<li class='list-group-item'>
+	  	        	echo "<li class='mix list-group-item $row->type_user'>
 	  	        		<div class='row'>
 	  	        			<div class='col-md-10 my-auto'>$row->last_name $row->first_name $row->middle_name</div>
 	  	        			<div class='col-md-2'>
 	  	        				<div class='btn-group' role='group' aria-label='Editable buttons'>
 	  	        					<button type='button' data-id='$row->id' class='btn btn-success btn-edit-user' data-toggle='modal' data-target='#editor-user'>Edit</button>
+	  	        					<button type='button' data-id='$row->id' class='btn btn-info btn-info-user'>Info</button>
 	  	        					<button type='button' data-id='$row->id' class='btn btn-danger btn-remove-user'>Remove</button>
 	  	        				</div>
 	  	        			</div>
