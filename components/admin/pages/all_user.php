@@ -83,7 +83,7 @@
 					<div class="form-group ">
 						<label for="gender" class="col-sm-12 form-control-label">Пол</label>
 						<div class="col-sm-12">
-							<input type="text" class="form-control" id="gender" name="gender" placeholder="Фамилия">
+							<input type="text" class="form-control" id="gender" name="gender" placeholder="Пол">
 						</div>
 					</div>
 					<div class="form-group ">

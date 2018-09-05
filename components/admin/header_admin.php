@@ -17,7 +17,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item <? if ($activeLink == 'admin'){echo 'active';} ?>">
-        <a class="nav-link" href="/admin">Home</a>
+        <a class="nav-link" href="/admin">Тесты</a>
       </li>
       <li class="nav-item <? if ($activeLink == 'all_user'){echo 'active';} ?>">
         <a class="nav-link" href="/admin/all_user">Все пользователи</a>

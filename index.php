@@ -27,36 +27,71 @@
 	}
 
 	$str = preg_replace("#/$#", "", substr($_SERVER['REQUEST_URI'], 1));
-
+	$requestStr = explode('/', $str);
 	require_once('header.php');
 
 	// print_r($_SERVER['REQUEST_URI']);
-
-	$requestStr = explode('/', $str);
-
-	// print_r($requestStr);
-
 	
-	if (file_exists('components/'.$requestStr[0].'/index.php')) {
-		// print_r($requestStr[0]);
-		require_once('components/'.$requestStr[0].'/index.php');
-	}
-	else {
-		if (!isset($_SESSION['loggined'])) {
-			require_once('components/auth/index.php');
+	if (!isset($_SESSION['loggined'])) {
+		if ($requestStr[0] == 'admin') {
+			require_once('components/admin/index.php');
 		}
 		else {
+			require_once('components/auth/index.php');
+		}
+		
+	}
+	else {
 
-			if (isset($_SESSION['user'])) {
-				if ($_SESSION['user']->profession) {
-					require_once('components/pages/expert/index.php');
-				}
-				else {
-					require_once('components/pages/student/index.php');
-				}
+		if (isset($_SESSION['user'])) {
+			if ($_SESSION['user']->type_user == 'stud') {
+				require_once('components/pages/student/index.php');
+			}
+			else if ($_SESSION['user']->type_user == 'exp'){
+				require_once('components/pages/expert/index.php');
+			}
+			else if ($_SESSION['user']->type_user == 'vol') {
+				require_once('components/pages/volunteer/index.php');
 			}
 		}
+
+		// if ($requestStr) {
+			
+
+		// 	if (!isset($_SESSION['loggined'])) {
+		// 		require_once('components/auth/index.php');
+		// 	}
+		// 	else {
+		// 		if ( (count($requestStr) == 1) && file_exists('components/'.$requestStr[0].'/index.php')) {
+					
+		// 			require_once('components/'.$requestStr[0].'/index.php');
+		// 		}
+		// 		else if ((count($requestStr) > 1) && file_exists('components/'.$requestStr[0].'/'.$requestStr[1].'/index.php')) {
+		// 			require_once('components/'.$requestStr[0].'/'.$requestStr[1].'/index.php');
+		// 		}
+		// 		else {
+		// 			require_once('404.php');
+		// 		}
+		// 	}
+		// }
+		// else {
+		// 	if (isset($_SESSION['user'])) {
+		// 		if ($_SESSION['user']->type_user == 'stud') {
+		// 			require_once('components/pages/student/index.php');
+		// 		}
+		// 		else if ($_SESSION['user']->type_user == 'exp'){
+		// 			require_once('components/pages/expert/index.php');
+		// 		}
+		// 		else if ($_SESSION['user']->type_user == 'vol') {
+		// 			require_once('components/pages/volunteer/index.php');
+		// 		}
+		// 	}
+		// }
 	}
+
+	
+	
+	
 
 	
 

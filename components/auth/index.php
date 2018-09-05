@@ -10,7 +10,8 @@
 
 	<div id="login-student" class="mod-btn" style="display: none;">
 		<h2><span class="fontawesome-lock"></span>Обучающийся <span class="fontawesome-times close-login"></span></h2>
-		<form action="javascript:void(0);" method="POST" class="login" data-id="student">
+		<form action="javascript:void(0);" method="POST" class="login" data-id="stud">
+			<input type="hidden" name="type_user" value="stud" >
 			<fieldset>
 				<p><label for="phone_student">Телефон:</label></p>
 				<p><input type="tel" id="phone_student" name="phone" value="" ></p>
@@ -25,7 +26,7 @@
 
 	<div id="register-student" class="mod-btn" style="display: none;">
 		<h2>Регистрация <span class="fontawesome-times close-register"></span></h2>
-		<form action="javascript:void(0);" method="POST" class="register" data-id="student">
+		<form action="javascript:void(0);" method="POST" class="register" data-id="stud">
 			<input type="hidden" name="type_user" value="stud" >
 			<fieldset>
 				

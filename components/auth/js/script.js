@@ -45,12 +45,9 @@
 			e.preventDefault();
 			var id = $(this).data('id'),
 				data_fields;
-			if (id == 'student') {
+			if (id == 'stud') {
 				data_fields = $(this).serialize();
 				
-				data_fields += "&type_user="+id;
-				console.log(data_fields);
-
 				$.ajax({
 					url: 'handlers/handlerRegister.php',
 					type: 'POST',
@@ -79,15 +76,12 @@
 			e.preventDefault();
 			var id = $(this).data('id'),
 				data_fields;
-			if (id == 'student') {
+			if (id == 'stud') {
 				data_fields = $(this).serialize();
-				
-				data_fields += "&type_user="+id;
-				
+								
 				$.ajax({
 					url: 'handlers/handlerLogin.php',
 					type: 'POST',
-					// dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
 					data: data_fields,
 				})
 				.done(function(resp) {
