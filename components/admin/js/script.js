@@ -4,7 +4,8 @@
 		$('#passport_data').mask('9999-999999');
 
 		if ($('#list-group').length) {
-			var mixer = mixitup('#list-group');
+			var listGR = document.querySelector('#list-group');
+			var mixer = mixitup(listGR);
 		}
 		
 		$(document).on('click', function(e){

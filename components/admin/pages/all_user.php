@@ -1,21 +1,16 @@
 <div class="row mgy-15">
 	<div class="col-md-12">
-		<div class="btn-group">
-		  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		      Фильтрация
-		    </button>
-		  <div class="dropdown-menu controls">
-		  	<a class="dropdown-item control" href="#" data-filter="all">Все</a>
-		    <a class="dropdown-item control" href="#" data-filter=".stud">Обучающиеся</a>
-		    <a class="dropdown-item control" href="#" data-filter=".exp">Эксперты</a>
-		    <a class="dropdown-item control" href="#" data-filter=".vol">Волонтёры</a>
-		  </div>
+		<div class="controls btn-group" >
+			<button type="button" class="control btn btn-success" data-filter="all">Все</button>
+			<button type="button" class="control btn btn-success" data-filter=".stud">Обучающиеся</button>
+			<button type="button" class="control btn btn-success" data-filter=".exp">Эксперты</button>
+			<button type="button" class="control btn btn-success" data-filter=".vol">Волонтёры</button>
 		</div>
 	</div>
 </div>
 <div class="row mgy-15">
 	<div class="col-md-12">
-	  	<ul class="list-group" id="list-group">
+	  	<ul class="list-group" id="list-group" >
 	  	<?
 	  		$query = "SELECT * FROM `users`";
 	  		
