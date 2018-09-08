@@ -27,6 +27,7 @@
 	        	
 	        	curl_close($myCurl);
 	        	$type_user = $res[0]->type_link;
+	        	$hash = $res[0]->hash;
 	        	require_once('/components/'.$requestStr[0].'/reg/index.php');
 	        }
 	        else {

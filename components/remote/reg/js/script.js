@@ -52,10 +52,14 @@
 				type: 'POST',
 				data: data_fields,
 			})
-			.done(function() {
+			.done(function(data) {
 				console.log("success");
-				$('.success-text').show();
-				window.location = '/';
+				var jsonData = JSON.parse(data);
+				if (jsonData.success) {
+					$('.success-text').show();
+					window.location = '/';
+				}
+				
 
 			})
 			.fail(function() {

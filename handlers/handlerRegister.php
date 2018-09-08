@@ -16,6 +16,9 @@
 
 	if($result)
 	{
+		$query2 = "UPDATE `temp_links` SET `active` = 1 WHERE `hash` = '".$hash."'";
+		$result2 = mysqli_query($link, $query2) or die("Ошибка " . mysqli_error($link)); 
+		
 	    echo json_encode(array('success' => true));
 	}
 	exit;

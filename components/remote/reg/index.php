@@ -6,6 +6,7 @@
 		<h2>Регистрация</h2>
 		<form action="javascript:void(0);" method="POST" class="register" >
 			<input type="hidden" name="type_user" value="<? echo $type_user; ?>" >
+			<input type="hidden" name="hash" value="<? echo $hash; ?>" >
 			<fieldset>
 				
 				<p><label for="last_name">Фамилия:</label> <br><input type="text" id="last_name" name="last_name" value="" ></p>
