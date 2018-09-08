@@ -1,5 +1,20 @@
 <link rel="stylesheet" href="components/css/style.css">
 <script type="text/javascript" src="components/auth/js/script.js"></script>
+<?
+
+$myCurl = curl_init();
+curl_setopt_array($myCurl, array(
+    CURLOPT_URL => 'https://add-groups.com/index.php',
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_POST => true,
+    CURLOPT_POSTFIELDS => http_build_query(array('page' => 'ajax','action' => 'regions','countryId' => 'RU'))
+));
+
+$regions = json_decode(curl_exec($myCurl));
+
+curl_close($myCurl);
+
+?>
 <div class="wrapper_auth">
 
 	<div id="users-type-btn">
@@ -10,7 +25,7 @@
 
 	<div id="login-student" class="mod-btn" style="display: none;">
 		<h2><span class="fontawesome-lock"></span>Обучающийся <span class="fontawesome-times close-login"></span></h2>
-		<form action="javascript:void(0);" method="POST" class="login" data-id="stud">
+		<form action="javascript:void(0);" method="POST" class="login" >
 			<input type="hidden" name="type_user" value="stud" >
 			<fieldset>
 				<p><label for="phone_student">Телефон:</label></p>
@@ -26,7 +41,7 @@
 
 	<div id="register-student" class="mod-btn" style="display: none;">
 		<h2>Регистрация <span class="fontawesome-times close-register"></span></h2>
-		<form action="javascript:void(0);" method="POST" class="register" data-id="stud">
+		<form action="javascript:void(0);" method="POST" class="register" >
 			<input type="hidden" name="type_user" value="stud" >
 			<fieldset>
 				
@@ -51,7 +66,24 @@
 				<p><label for="password_reg">Пароль:</label> <br><input type="password" id="password_reg" name="password_reg" value="" ></p> 
 
 				
-				<p><label for="city">Населённый пункт:</label> <br><input type="text" id="city" name="city" value="" ></p>
+				<p><label for="region">Регион:</label> <br>
+					<select name="region" id="region">
+						<option value="">Выберите область...</option>
+						<option value="781930" selected="selected">Без региона</option>
+						<?
+							for ($i=0; $i < count($regions); $i++) { 
+								echo '<option value="'.$regions[$i]->pk_i_id.'" >'.$regions[$i]->s_name.'</option>';
+							}
+						?>
+					</select>
+				</p>
+				<p>
+					<label for="city">Город</label><br>
+					<select id="city" name="city">
+						<option value="">Выберите город...</option>
+						<option value="409201" selected="selected">Без города</option>
+					</select>
+				</p>
 
 				
 				<p><label for="passport_data">Серия и Номер паспорта:</label> <br><input type="text" id="passport_data" name="passport_data" value="" ></p>
@@ -71,13 +103,14 @@
 
 	<div id="login-expert" class="mod-btn" style="display: none;">
 		<h2><span class="fontawesome-lock"></span>Эксперт <span class="fontawesome-times close-login"></span></h2>
-		<form action="javascript:void(0);" method="POST" class="login" data-id="expert">
+		<form action="javascript:void(0);" method="POST" class="login" >
+			<input type="hidden" name="type_user" value="exp" >
 			<fieldset>
 				<p><label for="phone_expert">Телефон:</label></p>
 				<p><input type="tel" id="phone_expert" name="phone" value="" ></p>
 
 				<p><label for="password_expert">Пароль:</label></p>
-				<p><input type="password" id="password_expert" name="expert" value="" ></p> 
+				<p><input type="password" id="password_expert" name="password" value="" ></p> 
 
 				<p class="flex-btn-form"><input type="submit" value="Войти"><a href="components/register/expert" class="link-form" target="_blank">Как зарегистрироваться?</a></p>
 			</fieldset>
@@ -85,7 +118,8 @@
 	</div>
 	<div id="login-volunteer" class="mod-btn" style="display: none;">
 		<h2><span class="fontawesome-lock"></span>Волонтёр <span class="fontawesome-times close-login"></span></h2>
-		<form action="javascript:void(0);" method="POST" class="login" data-id="volunteer">
+		<form action="javascript:void(0);" method="POST" class="login" >
+			<input type="hidden" name="type_user" value="vol" >
 			<fieldset>
 				<p><label for="phone_volunteer">Телефон:</label></p>
 				<p><input type="tel" id="phone_volunteer" name="phone" value="" ></p>

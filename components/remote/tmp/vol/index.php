@@ -1,10 +1,9 @@
-<link rel="stylesheet" href="components/css/style.css">
-<script type="text/javascript" src="components/register/volonter/js/script.js"></script>
+<link rel="stylesheet" href="/components/css/style.css">
+<script type="text/javascript" src="/components/remote/vol/js/script.js"></script>
 <div class="wrapper_auth">
-
 	<div id="register-volonter" class="mod-btn" >
 		<h2>Регистрация</h2>
-		<form action="javascript:void(0);" method="POST">
+		<form action="javascript:void(0);" method="POST" class="register">
 			<input type="hidden" name="type_user" value="vol" >
 			<fieldset>
 				
@@ -20,16 +19,33 @@
 				<p><label for="gender">Пол:</label> <br><input type="text" id="gender" name="gender" value="" ></p>
 
 				
-				<p><label for="birthday">Дата рождения:</label> <br><input type="text" id="birthday" name="birthday" value="" ></p>
+				<p><label for="birthday">Дата рождения:</label> <br><input type="date" id="birthday" name="birthday" value="" ></p>
 
 				
-				<p><label for="phone_reg">Номер мобильного телефона:</label> <br><input type="text" id="phone_reg"  name="phone_reg" value="" ></p>
+				<p><label for="phone_reg">Номер мобильного телефона:</label> <br><input type="tel" id="phone_reg"  name="phone_reg" value="" ></p>
 
 				
-				<p><label for="password_reg">Пароль:</label> <br><input type="password_reg" id="password_reg" name="password_reg" value="" ></p> 
+				<p><label for="password_reg">Пароль:</label> <br><input type="password" id="password_reg" name="password_reg" value="" ></p> 
 
 				
-				<p><label for="city">Населённый пункт:</label> <br><input type="text" id="city" name="city" value="" ></p>
+				<p><label for="region">Регион:</label> <br>
+					<select name="region" id="region">
+						<option value="">Выберите область...</option>
+						<option value="781930" selected="selected">Без региона</option>
+						<?
+							for ($i=0; $i < count($regions); $i++) { 
+								echo '<option value="'.$regions[$i]->pk_i_id.'" >'.$regions[$i]->s_name.'</option>';
+							}
+						?>
+					</select>
+				</p>
+				<p>
+					<label for="city">Город</label><br>
+					<select id="city" name="city">
+						<option value="">Выберите город...</option>
+						<option value="409201" selected="selected">Без города</option>
+					</select>
+				</p>
 
 				
 				<p><label for="passport_data">Серия и Номер паспорта:</label> <br><input type="text" id="passport_data" name="passport_data" value="" ></p>
@@ -40,6 +56,9 @@
 
 				<p class="flex-btn-form"><input type="submit" value="Зарегистрироваться"></p>
 			</fieldset>
+			<div class="success-text-exp-vol" style="display: none;">
+				Регистрация прошла успешно !
+			</div>
 		</form>
 	</div>
 

@@ -1,6 +1,22 @@
 <?
+
 	require_once('config.php');
 	
+
+	function getCities($cityId) {
+		$myCurl = curl_init();
+		curl_setopt_array($myCurl, array(
+		    CURLOPT_URL => 'https://add-groups.com/index.php',
+		    CURLOPT_RETURNTRANSFER => true,
+		    CURLOPT_POST => true,
+		    CURLOPT_POSTFIELDS => http_build_query(array('page' => 'ajax','action' => 'cities','regionId' => $cityId))
+		    // action=cities&regionId
+		));
+		$cities = curl_exec($myCurl);
+		curl_close($myCurl);
+		echo $cities;
+	}
+
 	function clearSessionUser () {
 		unset($_SESSION['loggined']);
 		unset($_SESSION['user']);
@@ -16,6 +32,14 @@
 		echo json_encode(array('success' => true));
 		exit;
 	}
+
+
+	if (isset($_POST['getCities'])) {
+		getCities($_POST['getCities']);
+		exit;
+	}
+
+
 
 	if (isset($_POST['logout'])) {
 		if ($_POST['logout'] == 'user') {
@@ -34,7 +58,10 @@
 	
 	if (!isset($_SESSION['loggined'])) {
 		if ($requestStr[0] == 'admin') {
-			require_once('components/admin/index.php');
+			require_once('components/'.$requestStr[0].'/index.php');
+		}
+		else if ($requestStr[0] == 'remote') {
+			require_once('components/'.$requestStr[0].'/index.php');
 		}
 		else {
 			require_once('components/auth/index.php');
@@ -47,11 +74,8 @@
 			if ($_SESSION['user']->type_user == 'stud') {
 				require_once('components/pages/student/index.php');
 			}
-			else if ($_SESSION['user']->type_user == 'exp'){
-				require_once('components/pages/expert/index.php');
-			}
-			else if ($_SESSION['user']->type_user == 'vol') {
-				require_once('components/pages/volunteer/index.php');
+			else if ($_SESSION['user']->type_user == 'exp' || $_SESSION['user']->type_user == 'vol'){
+				require_once('components/pages/expvol/index.php');
 			}
 		}
 

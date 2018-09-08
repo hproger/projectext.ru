@@ -74,35 +74,71 @@
 // АВТОРИЗАЦИЯ СО ВСЕХ ФОРМ
 		$(document).on('submit','.login', function(e){
 			e.preventDefault();
-			var id = $(this).data('id'),
-				data_fields;
-			if (id == 'stud') {
-				data_fields = $(this).serialize();
+			var data_fields = $(this).serialize();
 								
-				$.ajax({
-					url: 'handlers/handlerLogin.php',
-					type: 'POST',
-					data: data_fields,
-				})
-				.done(function(resp) {
-					console.log("success");
-					var jsonData = JSON.parse(resp);
-					if (jsonData.success) {
-						window.location = '/';
-					}
-					else {
-						alert('Ошибка авторизации');
-					}
+			$.ajax({
+				url: 'handlers/handlerLogin.php',
+				type: 'POST',
+				data: data_fields,
+			})
+			.done(function(resp) {
+				console.log("success");
+				var jsonData = JSON.parse(resp);
+				if (jsonData.success) {
+					window.location = '/';
+				}
+				else {
+					alert('Ошибка авторизации');
+				}
 
-				})
-				.fail(function() {
-					console.log("error");
-				})
-				.always(function() {
-					console.log("complete");
-				});
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
 				
-			}
+			
+		});
+
+		$('#region').on('change', function(){
+			var regionId = $(this).val();
+
+			$('#region').attr('disabled', true);
+			$('#city').attr('disabled', true);
+
+			$.ajax({
+				url: '/',
+				type: 'POST',
+				data: 'getCities='+regionId,
+			})
+			.done(function(data) {
+				console.log("success");
+				var jsonData = JSON.parse(data);
+				var length = jsonData.length, result = '';
+
+				if(length > 0) {
+
+				   result += '<option selected value="">Выберите область...</option><option value="409201" selected="selected">Без города</option>';
+				   for (var i = 0; i < length; i++) {
+				   	result += '<option value="' + jsonData[i].pk_i_id + '">' + jsonData[i].s_name + '</option>';
+				   }
+
+
+				} 
+
+				$("#city").html(result);
+				$('#region').attr('disabled', false);
+				$('#city').attr('disabled', false);
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
 		});
 		
 	});

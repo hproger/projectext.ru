@@ -29,7 +29,9 @@ body {
 	height: 100%;
 }
 
-input {
+input,
+select,
+textarea {
 	border: none;
 	font-family: inherit;
 	font-size: inherit;
@@ -46,6 +48,14 @@ input {
 	justify-content: center;
 	-ms-align-items: flex-start;
 	align-items: flex-start;
+	max-width: 440px;
+	width: 100%;
+}
+
+#login-student,
+#login-expert,
+#login-volunteer{
+	max-width: 400px;
 }
 
 #users-type-btn {
@@ -131,6 +141,16 @@ fieldset,
 	border-radius: 0 0 20px 20px;
 	padding: 20px 26px;
 }
+.success-text-exp-vol {
+	position: fixed;
+    bottom: 15px;
+    font: 400 18px/1.2 'Varela Round', Arial, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(64,199,129);
+    left: 0;
+    right: 0;
+}
 
 fieldset p{
 	color: #777;
@@ -141,7 +161,9 @@ fieldset p:last-child{
 	margin-bottom: 0;
 }
 
-fieldset input{
+fieldset input,
+fieldset select,
+textarea{
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -151,13 +173,16 @@ fieldset input[type="tel"],
 fieldset input[type="password"],
 fieldset input[type="text"],
 fieldset input[type="date"],
-fieldset select{
+fieldset select,
+textarea{
 	background-color: #eee;
 	/*color: #777;*/
 	color: #000;
 	padding: 4px 10px;
-	width: 328px;
+	/*width: 328px;*/
+	width: 100%;
 	outline: none;
+	box-sizing: border-box;
 
 }
 fieldset input[type="checkbox"]{
@@ -189,6 +214,9 @@ fieldset input[type="submit"]{
 	transition: 0.2s;
 }
 
+.mod-btn {
+	width: 100%;
+}
 .mod-btn .btn{
 	padding: .4em 1em calc(.4em + 3px);
 	font-size: 20px;
