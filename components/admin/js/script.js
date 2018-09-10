@@ -5,9 +5,21 @@
 
 		if ($('#list-group').length) {
 			var listGR = document.querySelector('#list-group');
-			var mixer = mixitup(listGR);
+			var mixer = mixitup(listGR,{
+				controls: {
+			        enable: false
+			    }
+			});
 		}
 		
+		$('.controls.btn-group .control.btn').on('click', function(e){
+			e.preventDefault();
+			var filter = $(this).data('filter');
+			$(this).siblings().removeClass('mixitup-control-active');
+			$(this).addClass('mixitup-control-active');
+			mixer.filter(filter);
+		});
+
 		$(document).on('click', function(e){
 			var $this = $(e.target),
 				$form = ($this.closest('.generate_links')) ? $this.closest('.generate_links') : null;

@@ -64,7 +64,13 @@
 			require_once('components/'.$requestStr[0].'/index.php');
 		}
 		else {
-			require_once('components/auth/index.php');
+			if ( $str && $requestStr[1] == 'auth' && $requestStr[2]) {
+				require_once('components/auth/'.$requestStr[2].'.php');
+			}
+			else {
+				require_once('components/auth/index.php');
+			}
+			
 		}
 		
 	}

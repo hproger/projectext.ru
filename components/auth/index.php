@@ -112,7 +112,7 @@ curl_close($myCurl);
 				<p><label for="password_expert">Пароль:</label></p>
 				<p><input type="password" id="password_expert" name="password" value="" ></p> 
 
-				<p class="flex-btn-form"><input type="submit" value="Войти"><a href="components/register/expert" class="link-form" target="_blank">Как зарегистрироваться?</a></p>
+				<p class="flex-btn-form"><input type="submit" value="Войти"><a href="components/auth/how_exp" class="link-form" target="_blank">Как зарегистрироваться?</a></p>
 			</fieldset>
 		</form>
 	</div>
@@ -127,7 +127,7 @@ curl_close($myCurl);
 				<p><label for="password_volunteer">Пароль:</label></p>
 				<p><input type="password" id="password_volunteer" name="password" value="" ></p> 
 
-				<p class="flex-btn-form"><input type="submit" value="Войти"><a href="components/register/volunteer" class="link-form" target="_blank">Как стать волонтёром ?</a></p>
+				<p class="flex-btn-form"><input type="submit" value="Войти"><a href="components/auth/how_vol" class="link-form" target="_blank">Как стать волонтёром ?</a></p>
 			</fieldset>
 		</form>
 	</div>
