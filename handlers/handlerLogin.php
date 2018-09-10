@@ -3,7 +3,7 @@
 
 	$pass = md5($_POST['password']);
 
-	$query = "SELECT * FROM `users` WHERE `phone_number` = '".$_POST['phone']."' AND `password` = '".$pass."'";
+	$query = "SELECT * FROM `users` WHERE `phone_number` = '".$_POST['phone']."' AND `password` = '".$pass."' AND `type_user` = '".$_POST['type_user']."'";
 	
 	
 	$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
