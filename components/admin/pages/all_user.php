@@ -76,9 +76,23 @@
 						</div>
 					</div>
 					<div class="form-group ">
-						<label for="gender" class="col-sm-12 form-control-label">Пол</label>
+						<label class="col-sm-12 form-control-label">Пол</label>
 						<div class="col-sm-12">
-							<input type="text" class="form-control" id="gender" name="gender" placeholder="Пол">
+							<!-- <input type="text" class="form-control" id="gender" name="gender" placeholder="Пол"> -->
+							<div class="input-group">
+								<span class="radio" style="margin-right: 15px;">
+									<label>
+										<input type="radio" name="gender" id="male" value="male" >
+										Мужчина
+									</label>
+								</span>
+								<span class="radio">
+									<label>
+										<input type="radio" name="gender" id="female" value="female" >
+										Женщина
+									</label>
+								</span>
+							</div>
 						</div>
 					</div>
 					<div class="form-group ">
@@ -99,10 +113,34 @@
 							<input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Номер мобильного телефона">
 						</div>
 					</div>
-					<div class="form-group ">
+					<!-- <div class="form-group ">
 						<label for="city" class="col-sm-12 form-control-label">Населённый пункт</label>
 						<div class="col-sm-12">
 							<input type="text" class="form-control" id="city" name="city" placeholder="Населённый пункт">
+						</div>
+					</div> -->
+					<div class="form-group">
+						<label for="region"  class="col-sm-12 form-control-label">Регион:</label>
+						<div class="col-sm-12">
+							<select name="region" id="region" class="form-control">
+								<option value="">Выберите область...</option>
+								<option value="781930">Без региона</option>
+								<?
+									for ($i=0; $i < count($regions); $i++) { 
+										echo '<option value="'.$regions[$i]->pk_i_id.'" >'.$regions[$i]->s_name.'</option>';
+									}
+								?>
+							</select>
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<label for="city" class="col-sm-12 form-control-label">Город</label>
+						<div class="col-sm-12">
+							<select id="city" name="city" class="form-control">
+								<option value="">Выберите город...</option>
+								<option value="409201">Без города</option>
+							</select>
 						</div>
 					</div>
 					<div class="form-group ">

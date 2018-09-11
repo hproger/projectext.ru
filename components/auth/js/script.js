@@ -122,7 +122,7 @@
 
 				   result += '<option selected value="">Выберите область...</option><option value="409201" selected="selected">Без города</option>';
 				   for (var i = 0; i < length; i++) {
-				   	result += '<option value="' + jsonData[i].pk_i_id + '">' + jsonData[i].s_name + '</option>';
+				   	result += '<option value="' + jsonData[i].pk_i_id + '">' + jsonData[i].name + '</option>';
 				   }
 
 

@@ -3,18 +3,36 @@
 	require_once('config.php');
 	
 
-	function getCities($cityId) {
-		$myCurl = curl_init();
-		curl_setopt_array($myCurl, array(
-		    CURLOPT_URL => 'https://add-groups.com/index.php',
-		    CURLOPT_RETURNTRANSFER => true,
-		    CURLOPT_POST => true,
-		    CURLOPT_POSTFIELDS => http_build_query(array('page' => 'ajax','action' => 'cities','regionId' => $cityId))
-		    // action=cities&regionId
-		));
-		$cities = curl_exec($myCurl);
-		curl_close($myCurl);
-		echo $cities;
+	function getRegions($link) {
+		$query = "SELECT * FROM `regions` ";
+		$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+		if($result->num_rows)
+		{
+		    
+	        // очищаем результат
+	                
+	        $regions = [];
+	        while ($row = mysqli_fetch_object($result)) {
+	        	$regions[] = $row;
+	        }
+	    }
+		return $regions;
+	}
+
+	function getCities($link,$regionId) {
+		$query = "SELECT * FROM `cities` WHERE `region_id` = $regionId";
+		$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
+		if($result->num_rows)
+		{
+		    
+	        // очищаем результат
+	                
+	        $cities = [];
+	        while ($row = mysqli_fetch_object($result)) {
+	        	$cities[] = $row;
+	        }
+	    }
+		print_r($cities);
 	}
 
 	function clearSessionUser () {
@@ -35,7 +53,7 @@
 
 
 	if (isset($_POST['getCities'])) {
-		getCities($_POST['getCities']);
+		getCities($link, $_POST['getCities']);
 		exit;
 	}
 

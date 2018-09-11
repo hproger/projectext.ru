@@ -2,17 +2,7 @@
 <script type="text/javascript" src="components/auth/js/script.js"></script>
 <?
 
-$myCurl = curl_init();
-curl_setopt_array($myCurl, array(
-    CURLOPT_URL => 'https://add-groups.com/index.php',
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => http_build_query(array('page' => 'ajax','action' => 'regions','countryId' => 'RU'))
-));
-
-$regions = json_decode(curl_exec($myCurl));
-
-curl_close($myCurl);
+$regions = getRegions($link);
 
 ?>
 <div class="wrapper_auth">
@@ -54,7 +44,14 @@ curl_close($myCurl);
 				<p><label for="middle_name">Отчество:</label> <br><input type="text" id="middle_name" name="middle_name" value="" ></p>
 
 				
-				<p><label for="gender">Пол:</label> <br><input type="text" id="gender" name="gender" value="" ></p>
+				<p><label>Пол:</label> <br>
+					<span class="radio">
+						<input type="radio" name="gender" id="male" value="male" checked="checked"> <label for="male">Мужчина</label>
+					</span>
+					<span class="radio">
+						<input type="radio" name="gender" id="female" value="female" > <label for="female">Женщина</label>
+					</span>
+				</p>
 
 				
 				<p><label for="birthday">Дата рождения:</label> <br><input type="date" id="birthday" name="birthday" value="" ></p>
@@ -72,7 +69,7 @@ curl_close($myCurl);
 						<option value="781930" selected="selected">Без региона</option>
 						<?
 							for ($i=0; $i < count($regions); $i++) { 
-								echo '<option value="'.$regions[$i]->pk_i_id.'" >'.$regions[$i]->s_name.'</option>';
+								echo '<option value="'.$regions[$i]->pk_i_id.'" >'.$regions[$i]->name.'</option>';
 							}
 						?>
 					</select>
@@ -88,8 +85,8 @@ curl_close($myCurl);
 				
 				<p><label for="passport_data">Серия и Номер паспорта:</label> <br><input type="text" id="passport_data" name="passport_data" value="" ></p>
 				
-				<p><input type="checkbox" id="license_data" name="license_data" checked="true"  required ><label for="license_data">Я принимаю пользовательское соглашение.</label></p>
-				<p><input type="checkbox" id="personal_data" name="personal_data" checked="true" required  ><label for="personal_data">Я согласен на обработку персональных данных.</label></p>
+				<p><input type="checkbox" id="license_data" name="license_data" checked="true"  required ><label for="license_data">Я принимаю <a href="/user_terms.html" target="_blank">пользовательское соглашение</a>.</label></p>
+				<p><input type="checkbox" id="personal_data" name="personal_data" checked="true" required  ><label for="personal_data">Я согласен на обработку <a href="/personal_data.html" target="_blank">персональных данных</a>.</label></p>
 				<p>рекапча будет тут</p>
 
 				<p class="flex-btn-form"><input type="submit" value="Зарегистрироваться"></p>

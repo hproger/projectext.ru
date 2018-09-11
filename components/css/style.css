@@ -174,7 +174,8 @@ fieldset input[type="password"],
 fieldset input[type="text"],
 fieldset input[type="date"],
 fieldset select,
-textarea{
+fieldset textarea,
+fieldset input[type="radio"]{
 	background-color: #eee;
 	/*color: #777;*/
 	color: #000;
@@ -184,6 +185,12 @@ textarea{
 	outline: none;
 	box-sizing: border-box;
 
+}
+fieldset input[type="radio"] {
+	width: 13px;
+	height: 13px;
+	padding: 0;
+	-webkit-appearance: radio;
 }
 fieldset input[type="checkbox"]{
 	-webkit-appearance: checkbox;
