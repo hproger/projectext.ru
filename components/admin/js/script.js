@@ -1,8 +1,11 @@
 ;(function($){
 	$(function(){
+
+// ПОДКЛЮЧЕНИЕ МАСКИ К ПОЛЯМ ТЕЛЕФОНА И ПАСПОРТНЫХ ДАННЫХ
 		$('#phone_number').mask('+7(999)999-99-99');
 		$('#passport_data').mask('9999-999999');
 
+// ИНИЦИАЛИЗАЦИЯ ПЛАГИНА ФИЛЬТРАЦИИ ПОЛЬЗОВАТЕЛЕЙ
 		if ($('#list-group').length) {
 			var listGR = document.querySelector('#list-group');
 			var mixer = mixitup(listGR,{
@@ -12,6 +15,7 @@
 			});
 		}
 		
+// ФИЛЬТРАЦИЯ ПОЛЬЗОВАТЕЛЕЙ
 		$('.controls.btn-group .control.btn').on('click', function(e){
 			e.preventDefault();
 			var filter = $(this).data('filter');
@@ -20,6 +24,7 @@
 			mixer.filter(filter);
 		});
 
+// РЕДАКТИРОВАНИЕ ПОЛЬЗОВАТЕЛЬСКИХ ДАННЫХ
 		$(document).on('click', '.btn-edit-user', function(e){
 			var $this = $(this);
 			e.preventDefault();
@@ -54,6 +59,7 @@
 			});
 		});
 
+// УДАЛЕНИЕ ПОЛЬЗОВАТЕЛЯ
 		$(document).on('click', '.btn-remove-user', function(e){
 			var $this = $(this);
 			e.preventDefault();
@@ -79,9 +85,29 @@
 			});
 		});
 
+		$(document).on('click', '.list-group input', function(){
+			$(this).select();
+		});
+
+// ВЫГРУЗКА В EXCEL
+		$(document).on('click','.downloadXLS', function(e){
+			e.preventDefault();
+
+			listTable = '<table><thead><tr><th>Ссылки</th></tr></thead><tbody>';
+			$(this).closest('.tab-pane.fade').find('.list-group li').each(function(){
+				listTable += "<tr><td>"+$(this).find('input').val()+"</td></tr>";
+			});
+			listTable += '</tbody></table>';
+			 var url='data:application/vnd.ms-excel,' + encodeURIComponent(listTable);
+			location.href=url;
+		});
+
+// ГЕНЕРАЦИЯ ВРЕМЕННЫХ ССЫЛОК 
 		$(document).on('click', '.genLinkBtn', function(e){
+			e.preventDefault();
 			var $this = $(this),
-				$form = ($this.closest('.generate_links')) ? $this.closest('.generate_links') : null;
+				$form = ($this.closest('.generate_links')) ? $this.closest('.generate_links') : null,
+				$list_group = $(this).closest('.tab-pane.fade').find('.list-group');
 				
 
 			if ($form ) {
@@ -99,8 +125,9 @@
 					if (jsonData.success) {
 						console.log("success");
 						for (var i = 0; i < respData.length; i++) {
-							listLi += '<li class="list-group-item">'+respData[i].link+'</li>';
+							listLi += '<li class="list-group-item"> <input type="text" value="'+respData[i].link+'" readonly /></li>';
 						}
+						$list_group.html(listLi);
 					}
 					else {
 
@@ -118,6 +145,7 @@
 			
 		});
 
+// ПОЛУЧЕНИЕ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ
 		$(document).on('click', '#user_info button[type="submit"]', function(e){
 			e.preventDefault();
 			var $thisForm = $(this).closest('form'),

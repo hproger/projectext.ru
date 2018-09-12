@@ -126,6 +126,7 @@
 								<option value="">Выберите область...</option>
 								<option value="781930">Без региона</option>
 								<?
+									$regions = getRegions($link);
 									for ($i=0; $i < count($regions); $i++) { 
 										echo '<option value="'.$regions[$i]->pk_i_id.'" >'.$regions[$i]->s_name.'</option>';
 									}

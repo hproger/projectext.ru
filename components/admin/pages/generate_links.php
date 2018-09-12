@@ -7,7 +7,7 @@ function getLinks($type, $link) {
 	{
 	    $res = "";
         while ($row = mysqli_fetch_object($result)) {
-        	$res .= "<li class='list-group-item ovfx-a'>$row->link</li>";
+        	$res .= "<li class='list-group-item ovfx-a'><input type='text' class='form-control' value='$row->link' readonly /></li>";
         }
         mysqli_free_result($result);
         echo $res;
@@ -48,8 +48,13 @@ function getLinks($type, $link) {
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-2">
-							<button type="submit" class="btn btn-success genLinkBtn">Сгенерировать</button>
+						<div class="row">
+							<div class="col-sm-2">
+								<button type="submit" class="btn btn-success genLinkBtn">Сгенерировать</button>
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-success downloadXLS">Выгрузить в файл</button>
+							</div>
 						</div>
 					</div>
 				</form>
@@ -83,8 +88,13 @@ function getLinks($type, $link) {
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-sm-2">
-							<button type="submit" class="btn btn-success genLinkBtn">Сгенерировать</button>
+						<div class="row">
+							<div class="col-sm-2">
+								<button type="submit" class="btn btn-success genLinkBtn">Сгенерировать</button>
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-success downloadXLS">Выгрузить в файл</button>
+							</div>
 						</div>
 					</div>
 				</form>
