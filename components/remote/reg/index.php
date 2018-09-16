@@ -17,8 +17,21 @@
 				
 				<p><label for="middle_name">Отчество:</label> <br><input type="text" id="middle_name" name="middle_name" value="" ></p>
 
-				
-				<p><label for="gender">Пол:</label> <br><input type="text" id="gender" name="gender" value="" ></p>
+				<p>
+					<label>Пол:</label> <br>
+					<span class="radio" style="margin-right: 15px;">
+						<label>
+							<input type="radio" name="gender" id="male" value="male" >
+							Мужчина
+						</label>
+					</span>
+					<span class="radio">
+						<label>
+							<input type="radio" name="gender" id="female" value="female" >
+							Женщина
+						</label>
+					</span>
+				</p>
 
 				
 				<p><label for="birthday">Дата рождения:</label> <br><input type="date" id="birthday" name="birthday" value="" ></p>
@@ -45,7 +58,7 @@
 						<option value="781930" selected="selected">Без региона</option>
 						<?
 							for ($i=0; $i < count($regions); $i++) { 
-								echo '<option value="'.$regions[$i]->pk_i_id.'" >'.$regions[$i]->s_name.'</option>';
+								echo '<option value="'.$regions[$i]->pk_i_id.'" >'.$regions[$i]->name.'</option>';
 							}
 						?>
 					</select>
@@ -61,8 +74,8 @@
 				
 				<p><label for="passport_data">Серия и Номер паспорта:</label> <br><input type="text" id="passport_data" name="passport_data" value="" ></p>
 				
-				<p><input type="checkbox" id="license_data" name="license_data" checked="true" ><label for="license_data">Я принимаю пользовательское соглашение.</label></p>
-				<p><input type="checkbox" id="personal_data" name="personal_data" checked="true" ><label for="personal_data">Я согласен на обработку персональных данных.</label></p>
+				<p><input type="checkbox" id="license_data" name="license_data" checked="true" required="required"><label for="license_data">Я принимаю пользовательское соглашение.</label></p>
+				<p><input type="checkbox" id="personal_data" name="personal_data" checked="true" required="required"><label for="personal_data">Я согласен на обработку персональных данных.</label></p>
 				<p>рекапча будет тут</p>
 
 				<p class="flex-btn-form"><input type="submit" value="Зарегистрироваться"></p>

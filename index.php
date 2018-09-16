@@ -32,7 +32,7 @@
 	        	$cities[] = $row;
 	        }
 	    }
-		print_r($cities);
+		echo json_encode($cities);
 	}
 
 	function clearSessionUser () {
@@ -103,38 +103,6 @@
 			}
 		}
 
-		// if ($requestStr) {
-			
-
-		// 	if (!isset($_SESSION['loggined'])) {
-		// 		require_once('components/auth/index.php');
-		// 	}
-		// 	else {
-		// 		if ( (count($requestStr) == 1) && file_exists('components/'.$requestStr[0].'/index.php')) {
-					
-		// 			require_once('components/'.$requestStr[0].'/index.php');
-		// 		}
-		// 		else if ((count($requestStr) > 1) && file_exists('components/'.$requestStr[0].'/'.$requestStr[1].'/index.php')) {
-		// 			require_once('components/'.$requestStr[0].'/'.$requestStr[1].'/index.php');
-		// 		}
-		// 		else {
-		// 			require_once('404.php');
-		// 		}
-		// 	}
-		// }
-		// else {
-		// 	if (isset($_SESSION['user'])) {
-		// 		if ($_SESSION['user']->type_user == 'stud') {
-		// 			require_once('components/pages/student/index.php');
-		// 		}
-		// 		else if ($_SESSION['user']->type_user == 'exp'){
-		// 			require_once('components/pages/expert/index.php');
-		// 		}
-		// 		else if ($_SESSION['user']->type_user == 'vol') {
-		// 			require_once('components/pages/volunteer/index.php');
-		// 		}
-		// 	}
-		// }
 	}
 
 	

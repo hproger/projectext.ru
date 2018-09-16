@@ -14,18 +14,7 @@
 
 	        if (strtotime($curTime) <= strtotime($res[0]->last_date)) {
 
-	        	$myCurl = curl_init();
-	        	curl_setopt_array($myCurl, array(
-	        	    CURLOPT_URL => 'https://add-groups.com/index.php',
-	        	    CURLOPT_RETURNTRANSFER => true,
-	        	    CURLOPT_POST => true,
-	        	    CURLOPT_POSTFIELDS => http_build_query(array('page' => 'ajax','action' => 'regions','countryId' => 'RU'))
-	        	    // action=cities&regionId
-	        	));
-	        	
-	        	$regions = json_decode(curl_exec($myCurl));
-	        	
-	        	curl_close($myCurl);
+	        	$regions = getRegions($link);
 	        	$type_user = $res[0]->type_link;
 	        	$hash = $res[0]->hash;
 	        	require_once('/components/'.$requestStr[0].'/reg/index.php');

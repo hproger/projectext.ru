@@ -28,15 +28,15 @@ function generateLinks($count = 1, $typeLink, $link, $dateActive = '') {
 	while ( $i <= $count) {
 		$hash = md5(rand(0, PHP_INT_MAX));
 		if ($i == 1) {
-			$values .= "('//".$_SERVER['HTTP_HOST']."/remote/".$hash."', '".$currentDate."', '".$typeLink."', false)";
+			$values .= "('//".$_SERVER['HTTP_HOST']."/remote/".$hash."', '".$hash."', '".$currentDate."', '".$typeLink."', false)";
 		}
 		else {
-			$values .= ", ('//".$_SERVER['HTTP_HOST']."/remote/".$hash."', '".$currentDate."', '".$typeLink."', false)";
+			$values .= ", ('//".$_SERVER['HTTP_HOST']."/remote/".$hash."', '".$hash."', '".$currentDate."', '".$typeLink."', false)";
 		}
 		$i++;
 	}
 
-	$query = "INSERT INTO `temp_links` (`link`, `last_date`, `type_link`, `active`) VALUES ".$values;
+	$query = "INSERT INTO `temp_links` (`link`, `hash`, `last_date`, `type_link`, `active`) VALUES ".$values;
 	$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 	
 	if ($result) {

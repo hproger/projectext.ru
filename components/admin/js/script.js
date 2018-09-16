@@ -27,6 +27,7 @@
 // РЕДАКТИРОВАНИЕ ПОЛЬЗОВАТЕЛЬСКИХ ДАННЫХ
 		$(document).on('click', '.btn-edit-user', function(e){
 			var $this = $(this);
+			$('button[type="submit"]').removeClass('is-valid').removeClass('is-invalid');
 			e.preventDefault();
 			console.log('будем редактировать');
 			$.ajax({
@@ -37,7 +38,8 @@
 			.done(function(resp) {
 				console.log("success");
 				var jsonData = JSON.parse(resp),
-				    userInfo = jsonData.data[0];
+				    userInfo = jsonData.data[0],
+				    city = userInfo.city.split(',');
 
 				    $('#user_id').val(userInfo.id);
 				    $('#last_name').val(userInfo.last_name);
@@ -46,9 +48,13 @@
 				    $('#birthday').val(userInfo.birthday);
 				    $('#profession').val(userInfo.profession);
 				    $('#phone_number').val(userInfo.phone_number);
-				    $('#city').val(userInfo.city);
 				    $('#passport_data').val(userInfo.passport_data);
 			    	$('#'+userInfo.gender).attr('checked','checked');
+			    	$('#region').val(city[0]);
+			    	$('#region').trigger('change');
+				    setTimeout(function(){
+				    	$('#city').val(city[1]);
+				    },500);
 				
 			})
 			.fail(function() {
@@ -176,5 +182,47 @@
 			});
 
 		});
+
+// ПОДГРУЗКА НАСЕЛЁННЫХ ПУНКТОВ ВЫБРАННОГО РЕГИОНА
+		$('#region').on('change', function(){
+			var regionId = $(this).val();
+
+			$('#region').attr('disabled', true);
+			$('#city').attr('disabled', true);
+
+			$.ajax({
+				url: '/',
+				type: 'POST',
+				data: 'getCities='+regionId,
+			})
+			.done(function(data) {
+				console.log("success");
+				var jsonData = JSON.parse(data);
+				// console.log(data);
+				var length = jsonData.length, result = '';
+				console.log(jsonData);
+				if(length > 0) {
+
+				   result += '<option selected value="">Выберите область...</option><option value="409201" selected="selected">Без города</option>';
+				   for (var i = 0; i < length; i++) {
+				   	result += '<option value="' + jsonData[i].id + '">' + jsonData[i].name + '</option>';
+				   }
+
+
+				} 
+
+				$("#city").html(result);
+				$('#region').attr('disabled', false);
+				$('#city').attr('disabled', false);
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+			
+		});
+
 	});
 })(jQuery);
