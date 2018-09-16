@@ -54,6 +54,7 @@
 			})
 			.done(function(data) {
 				console.log("success");
+				console.log(data);
 				var jsonData = JSON.parse(data);
 				if (jsonData.success) {
 					$('.success-text').show();

@@ -1,6 +1,6 @@
 <?
 function getLinks($type, $link) {
-	$query = "SELECT * FROM `temp_links` WHERE `type_link` = '".$type."' LIMIT 10";
+	$query = "SELECT * FROM `temp_links` WHERE `type_link` = '".$type."' and `active` = 0 LIMIT 10";
 	
 	$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 	if($result->num_rows)

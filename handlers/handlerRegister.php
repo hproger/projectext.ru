@@ -14,9 +14,9 @@
 	
 	$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 
-	if($result)
+	if($result && isset($_POST['hash']))
 	{
-		$query2 = "UPDATE `temp_links` SET `active` = 1 WHERE `hash` = '".$hash."'";
+		$query2 = "UPDATE `temp_links` SET `active` = 1 WHERE `hash` = '".$_POST['hash']."'";
 		$result2 = mysqli_query($link, $query2) or die("Ошибка " . mysqli_error($link)); 
 		
 	    echo json_encode(array('success' => true));
