@@ -91,6 +91,32 @@
 			});
 		});
 
+// УДАЛЕНИЕ ВРЕМЕННОЙ ССЫЛКИ
+		$(document).on('click', '.btn-remove-link', function(e){
+			var $this = $(this);
+			e.preventDefault();
+			console.log('будем удалять');
+			$.ajax({
+				url: '/handlers/handlerGenerateLinks.php',
+				type: 'POST',
+				data: 'linkId='+$this.data('id')+'&remove=1',
+			})
+			.done(function(resp) {
+				console.log("success");
+				var jsonData = JSON.parse(resp);
+				// console.log(jsonData);
+				if (jsonData.success) {
+					$this.closest('.list-group-item').remove();
+				}
+			})
+			.fail(function() {
+				console.log("error");
+			})
+			.always(function() {
+				console.log("complete");
+			});
+		});
+
 		$(document).on('click', '.list-group input', function(){
 			$(this).select();
 		});
@@ -131,7 +157,7 @@
 					if (jsonData.success) {
 						console.log("success");
 						for (var i = 0; i < respData.length; i++) {
-							listLi += '<li class="list-group-item"> <input type="text" value="'+respData[i].link+'" readonly /></li>';
+							listLi += '<li class="list-group-item ovfx-a df"> <input type="text" class="form-control" value="'+respData[i].link+'" readonly /><button type="button" data-id="'+respData[i].id+'" class="btn btn-danger btn-remove-link"><i class="fas fa-times"></i></button></li>';
 						}
 						$list_group.html(listLi);
 					}
@@ -151,7 +177,7 @@
 			
 		});
 
-// ПОЛУЧЕНИЕ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ
+// СОХРАНЕНИЕ ИНФОРМАЦИИ О ПОЛЬЗОВАТЕЛЕ
 		$(document).on('click', '#user_info button[type="submit"]', function(e){
 			e.preventDefault();
 			var $thisForm = $(this).closest('form'),

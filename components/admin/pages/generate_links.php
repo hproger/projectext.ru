@@ -1,13 +1,13 @@
 <?
 function getLinks($type, $link) {
-	$query = "SELECT * FROM `temp_links` WHERE `type_link` = '".$type."' and `active` = 0 LIMIT 10";
+	$query = "SELECT * FROM `temp_links` WHERE `type_link` = '".$type."' and `active` = 0 ORDER BY `id` DESC LIMIT 10 ";
 	
 	$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 	if($result->num_rows)
 	{
 	    $res = "";
         while ($row = mysqli_fetch_object($result)) {
-        	$res .= "<li class='list-group-item ovfx-a'><input type='text' class='form-control' value='$row->link' readonly /></li>";
+        	$res .= "<li class='list-group-item ovfx-a df'><input type='text' class='form-control' value='$row->link' readonly /><button type='button' data-id='$row->id' class='btn btn-danger btn-remove-link'><i class='fas fa-times'></i></button></li>";
         }
         mysqli_free_result($result);
         echo $res;
