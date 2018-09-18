@@ -63,6 +63,19 @@
 					<input type="date" class="form-control" id="birthday" name="birthday" value="<? echo $res[0]->birthday; ?>">
 				</div>
 			</div>
+			<? if ($res[0]->type_user == 'exp') {?>
+				<div class="form-group ">
+					<label for="profession" class="col-sm-12 form-control-label">Профессия</label>
+					<div class="col-sm-12">
+						<select name="profession" id="profession" class="form-control" required="required">
+							<option value="">...</option>
+							<option value="Программист">Программист</option>
+							<option value="Механик">Механик</option>
+							<option value="Бухгалтер">Бухгалтер</option>
+						</select>
+					</div>
+				</div>
+				<? } ?>
 			<div class="form-group ">
 				<label for="phone_number" class="col-sm-12 form-control-label">Номер мобильного телефона</label>
 				<div class="col-sm-12">
