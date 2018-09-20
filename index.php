@@ -19,7 +19,7 @@
 		return $regions;
 	}
 
-	function getCities($link,$regionId) {
+	function getCities($link,$regionId, $php = false) {
 		$query = "SELECT * FROM `cities` WHERE `region_id` = $regionId";
 		$result = mysqli_query($link, $query) or die("Ошибка " . mysqli_error($link)); 
 		if($result->num_rows)
@@ -32,7 +32,13 @@
 	        	$cities[] = $row;
 	        }
 	    }
-		echo json_encode($cities);
+	    if ($php) {
+	    	return $cities;
+	    }
+	    else {
+	    	echo json_encode($cities);
+	    }
+		
 	}
 
 	function clearSessionUser () {

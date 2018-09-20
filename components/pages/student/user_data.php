@@ -69,10 +69,52 @@
 					<input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Номер мобильного телефона" value="<? echo $res[0]->phone_number; ?>">
 				</div>
 			</div>
-			<div class="form-group ">
-				<label for="city" class="col-sm-12 form-control-label">Населённый пункт</label>
+			<div class="form-group">
+				<label for="region"  class="col-sm-12 form-control-label">Регион:</label>
 				<div class="col-sm-12">
-					<input type="text" class="form-control" id="city" name="city" placeholder="Населённый пункт" value="<? echo $res[0]->city; ?>">
+					<select name="region" id="region" class="form-control">
+						<option value="">Выберите область...</option>
+						<option value="781930">Без региона</option>
+						<?
+							$regions = getRegions($link);
+							$SELECTED = '';
+							$regionId = '';
+							for ($i=0; $i < count($regions); $i++) { 
+								$citiesId = explode(",", $_SESSION['user']->city);
+
+								if ($regions[$i]->pk_i_id == $citiesId[0]) {
+									$SELECTED = 'selected';
+									$regionId = $citiesId[0];
+								}
+								else {
+									$SELECTED = '';
+								}
+								echo '<option value="'.$regions[$i]->pk_i_id.'"  '. $SELECTED .' >'.$regions[$i]->name.'</option>';
+							}
+						?>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="city" class="col-sm-12 form-control-label">Город</label>
+				<div class="col-sm-12">
+					<select id="city" name="city" class="form-control">
+						<option value="">Выберите город...</option>
+						<option value="409201">Без города</option>
+						<?
+							$cities = getCities($link, $regionId, true);
+							for ($i=0; $i < count($cities); $i++) { 
+
+								if ($cities[$i]->id == $citiesId[1]) {
+									$SELECTED = 'selected';
+								}
+								else {
+									$SELECTED = '';
+								}
+								echo '<option value="'.$cities[$i]->id.'"  '. $SELECTED .' >'.$cities[$i]->name.'</option>';
+							}
+						?>
+					</select>
 				</div>
 			</div>
 			<div class="form-group ">
