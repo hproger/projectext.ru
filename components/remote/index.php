@@ -17,17 +17,17 @@
 	        	$regions = getRegions($link);
 	        	$type_user = $res[0]->type_link;
 	        	$hash = $res[0]->hash;
-	        	require_once('/components/'.$requestStr[0].'/reg/index.php');
+	        	require_once($ROOTDIR.'/components/'.$requestStr[0].'/reg/index.php');
 	        }
 	        else {
-	        	require_once('/404.php');
+	        	require_once($ROOTDIR.'/404.php');
 	        }
 			
 	        mysqli_free_result($result);
 	        
 		}
 		else {
-			require_once('/404.php');
+			require_once($ROOTDIR.'/404.php');
 		}
 	}
 
