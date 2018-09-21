@@ -6,7 +6,8 @@
   $activeLink = end($requestStr);
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"><? 
+  <a class="navbar-brand"><img src="/components/images/logo.jpg"></a>
+  <a class="navbar-brand" href="/"><? 
     if (isset($_SESSION['user'])) {
       $uType = '';
       $listLi = '';

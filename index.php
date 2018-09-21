@@ -2,6 +2,7 @@
 
 	require_once('config.php');
 	
+	$ROOTDIR = $_SERVER['DOCUMENT_ROOT'];
 
 	function getRegions($link) {
 		$query = "SELECT * FROM `regions` ";
@@ -76,23 +77,23 @@
 
 	$str = preg_replace("#/$#", "", substr($_SERVER['REQUEST_URI'], 1));
 	$requestStr = explode('/', $str);
-	require_once('header.php');
+	require_once($ROOTDIR.'/header.php');
 
 	// print_r($_SERVER['REQUEST_URI']);
 	
 	if (!isset($_SESSION['loggined'])) {
 		if ($requestStr[0] == 'admin') {
-			require_once('components/'.$requestStr[0].'/index.php');
+			require_once($ROOTDIR.'/components/'.$requestStr[0].'/index.php');
 		}
 		else if ($requestStr[0] == 'remote') {
-			require_once('components/'.$requestStr[0].'/index.php');
+			require_once($ROOTDIR.'components/'.$requestStr[0].'/index.php');
 		}
 		else {
 			if ( $str && $requestStr[1] == 'auth' && $requestStr[2]) {
-				require_once('components/auth/'.$requestStr[2].'.php');
+				require_once($ROOTDIR.'/components/auth/'.$requestStr[2].'.php');
 			}
 			else {
-				require_once('components/auth/index.php');
+				require_once($ROOTDIR.'/components/auth/index.php');
 			}
 			
 		}
@@ -102,10 +103,10 @@
 
 		if (isset($_SESSION['user'])) {
 			if ($_SESSION['user']->type_user == 'stud') {
-				require_once('components/pages/student/index.php');
+				require_once($ROOTDIR.'/components/pages/student/index.php');
 			}
 			else if ($_SESSION['user']->type_user == 'exp' || $_SESSION['user']->type_user == 'vol'){
-				require_once('components/pages/expvol/index.php');
+				require_once($ROOTDIR.'/components/pages/expvol/index.php');
 			}
 		}
 

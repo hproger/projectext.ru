@@ -272,3 +272,56 @@ fieldset input[type="submit"]:active {
 	color: #ff9000;
 	display: inline-block;
 }
+
+
+/*
+
+НОВЫЙ СТИЛЬ ОФОРМЛЕНИЯ (ТЕМА)
+
+КНОПКИ {
+	статик - #ea5066
+	ховер - #bd293e
+	актив - #a52133
+}
+
+Типа синий: #123659
+Типа серый: #aac0d5
+
+
+
+ */
+
+
+.btn,
+fieldset input[type="submit"] {
+	background: #ea5066;
+	box-shadow: 0 -3px #bd293e inset;
+
+}
+.btn:hover,
+fieldset input[type="submit"]:hover {
+	background: #bd293e;
+}
+
+.btn:active,
+fieldset input[type="submit"]:active {
+	background: #a52133;
+	box-shadow: 0 -3px #a52133 inset;
+}
+
+h2 {
+	background: #ea5066;
+}
+
+.link-form {
+	color: #123659;
+}
+
+
+.wrapper-logo {
+	width: 100%;
+	text-align: center;
+}
+.wrapper-logo img {
+	max-width: 150px;
+}

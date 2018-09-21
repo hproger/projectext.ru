@@ -6,3 +6,140 @@ body {
 	margin-top: 15px;
 	margin-bottom: 15px;
 }
+
+
+
+// НОВОЕ ОФОРМЛЕНИЕ (ТЕМА)
+/*
+
+КНОПКИ {
+	статик - #ea5066
+	ховер - #bd293e
+	актив - #a52133
+}
+
+Типа синий: #123659
+Типа серый: #aac0d5
+
+
+ */
+
+
+// БЛОК ОФОРМЛЕНИЯ КНОПОК - НАЧАЛО
+.btn-success,
+.btn-success:not(:disabled):not(.disabled) {
+	background-color: #ea5066;
+    border-color: #ea5066;
+    color: #fff;
+    &:hover {
+		background-color: #bd293e;
+	    border-color: #bd293e;
+	    color: #fff;
+    }
+    &:active {
+    	background-color: #a52133;
+	    border-color: #a52133;
+	    box-shadow: none;
+	    color: #fff;
+    }
+    &:focus {
+	    box-shadow: none;
+	    color: #fff;
+    }
+
+    &.mixitup-control-active {
+    	background-color: #a52133;
+	    border-color: #a52133;
+	    box-shadow: none;
+	    color: #fff;
+    }
+}
+
+.btn-success:not(:disabled):not(.disabled):active:focus {
+	background-color: #a52133;
+    border-color: #a52133;
+    box-shadow: none;
+}
+
+
+.btn-info,
+.btn-info:not(:disabled):not(.disabled) {
+	background-color: #123659;
+    border-color: #123659;
+    color: #fff;
+    &:hover {
+		background-color: #1d548a;
+	    border-color: #1d548a;
+	    color: #fff;
+    }
+    &:active {
+    	background-color: #0f2c48;
+	    border-color: #0f2c48;
+	    box-shadow: none;
+	    color: #fff;
+    }
+    &:focus {
+	    box-shadow: none;
+	    color: #fff;
+    }
+}
+
+.btn-info:not(:disabled):not(.disabled):active:focus {
+	box-shadow: none;
+}
+
+.btn-danger,
+.btn-danger:not(:disabled):not(.disabled) {
+    color: #fff;
+    background-color: #aac0d5;
+    border-color: #aac0d5;
+    &:hover {
+		background-color: #99adbf;
+	    border-color: #99adbf;
+	    color: #fff;
+    }
+    &:active {
+    	background-color: #7f8f9e;
+	    border-color: #7f8f9e;
+	    box-shadow: none;
+	    color: #fff;
+    }
+    &:focus {
+	    box-shadow: none;
+	    color: #fff;
+    }
+}
+.btn-danger:not(:disabled):not(.disabled):active:focus {
+	box-shadow: none;
+}
+
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	background-color: #ea5066;
+    &:hover {
+		background-color: #bd293e;
+	    color: #fff;
+    }
+    &:active {
+    	background-color: #a52133;
+	    box-shadow: none;
+	    color: #fff;
+    }
+    &:focus {
+	    box-shadow: none;
+	    color: #fff;
+    }
+}
+
+// БЛОК ОФОРМЛЕНИЯ КНОПОК - КОНЕЦ
+
+
+.bg-dark {
+	background-color: #123659 !important;
+}
+
+a.navbar-brand {
+	img {
+		max-width: 60px;
+	}
+}

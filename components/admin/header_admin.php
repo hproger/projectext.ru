@@ -8,8 +8,11 @@
   $activeLink = end($requestStr);
 ?>
 
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Администратор</a>
+  <a class="navbar-brand"><img src="components/images/logo.jpg"></a>
+  <a class="navbar-brand" href="/admin">Администратор</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

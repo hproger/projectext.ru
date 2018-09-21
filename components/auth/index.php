@@ -6,8 +6,11 @@ $regions = getRegions($link);
 
 ?>
 <div class="wrapper_auth">
-
+	
 	<div id="users-type-btn">
+		<div class="wrapper-logo">
+			<img src="components/images/logo.jpg">
+		</div>
 		<button class="btn btn-user" data-type="student">Обучающийся</button>
 		<button class="btn btn-user" data-type="expert">Эксперт</button>
 		<button class="btn btn-user" data-type="volunteer">Волонтёр</button>
