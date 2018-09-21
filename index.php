@@ -86,7 +86,7 @@
 			require_once($ROOTDIR.'/components/'.$requestStr[0].'/index.php');
 		}
 		else if ($requestStr[0] == 'remote') {
-			require_once($ROOTDIR.'components/'.$requestStr[0].'/index.php');
+			require_once($ROOTDIR.'/components/'.$requestStr[0].'/index.php');
 		}
 		else {
 			if ( $str && $requestStr[1] == 'auth' && $requestStr[2]) {
